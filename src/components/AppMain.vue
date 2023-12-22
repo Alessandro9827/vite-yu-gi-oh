@@ -14,6 +14,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@use '../styles/partials/variables.scss' as *;
+
+  main {
+    padding: 4rem;
+    background-color: $primary-bg;
+  }
 
 </style>
