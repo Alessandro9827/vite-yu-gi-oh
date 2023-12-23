@@ -1,17 +1,18 @@
 <template lang="">
   <section id='cards-wrapeper' class="container" >
-    <div class="row">
-        <h2>
-        found N cards
-    </h2>
+    <div class="title row">
+        <h2 class="text-white">
+            Found {{ cardsList.length }} cards
+        </h2>
     </div>
     <div class="cards row">
-        <CardElement  v-for="card in cardsList" key="card.id" :card="card"/>
+        <CardElement  v-for="card in cardsList" :key="card.id" :card="card"/>
     </div>
   </section>
 </template>
 
 <script>
+import { setTransitionHooks } from 'vue';
 import CardElement from './CardElement.vue';
 import axios from 'axios';
 
@@ -23,7 +24,6 @@ export default {
         }
     },
 
-
     components: {
         CardElement
     },
@@ -31,11 +31,11 @@ export default {
     methods: {
         getCards() {
             axios.get(this.apiUrl)
-                Then((response) => {
-                    console.log(response);
+                .then((response) => {
+                    console.log(response.data.data);
                     this.cardsList = response.data.data;
                 })
-                .cath(function (error){
+                .catch(function (error) {
                     console.log(error);
                 });
         }
@@ -53,10 +53,11 @@ export default {
 
  section#cards-wrapper {
     background-color: white;
-
-    h2 {
-        background-color: $dark-bg;
-        color: white;
-    }
  }
+
+h2 {
+    background-color: $dark-bg;
+    color:white;
+}
+ 
 </style>

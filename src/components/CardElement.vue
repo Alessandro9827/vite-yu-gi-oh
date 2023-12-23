@@ -1,8 +1,14 @@
 <template lang="">
-  <article>
-    <h3>
+  <article class="p-0">
+    <section class=image>
+        <img :src="card.card_images[0].image_url" alt="">
+    </section>
+    <h3 class="text-white text-uppercase fs-6">
         {{ card.name }}
     </h3>
+    <p>
+        {{ card.archetype }}
+    </p>
   </article>
 </template>
 
@@ -18,10 +24,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '../styles/patials/variables.scss' as *;
+@use '../styles/partials/variables.scss' as *;
 
-    article {
+article {
+    width: calc((100% / 5) - 1rem );
+    margin: 0 .5rem;
+    background-color: $primary-bg;
+    text-align: center;
+
+    img {
         width: 100%;
-        background-color: $primary-bg;
     }
+}
 </style>
