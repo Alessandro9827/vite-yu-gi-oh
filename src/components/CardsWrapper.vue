@@ -1,12 +1,12 @@
 <template lang="">
-  <section id='cards-wrapeper' class="container" >
+  <section id='cards-wrapeper' class="container bg-white" >
     <div class="title row">
         <h2 class="text-white">
-            Found {{ cardsList.length }} cards
+            Found {{ store.cardsList.length }} cards
         </h2>
     </div>
     <div class="cards row">
-        <CardElement  v-for="card in cardsList" :key="card.id" :card="card"/>
+        <CardElement  v-for="card in store.cardsList" :key="card.id" :card="card"/>
     </div>
   </section>
 </template>
@@ -15,12 +15,14 @@
 import { setTransitionHooks } from 'vue';
 import CardElement from './CardElement.vue';
 import axios from 'axios';
+import { store } from '../js/store';
 
 export default {
     data() {
         return {
-            cardsList : [],
-            apiUrl :'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=30&offset=0'
+            //cardsList : [],
+            //apiUrl :'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=30&offset=0',
+            store
         }
     },
 
@@ -29,20 +31,11 @@ export default {
     },
 
     methods: {
-        getCards() {
-            axios.get(this.apiUrl)
-                .then((response) => {
-                    console.log(response.data.data);
-                    this.cardsList = response.data.data;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
+        
     },
 
     created() {
-        this.getCards();
+        this.store.getCards();
     },
 
 }

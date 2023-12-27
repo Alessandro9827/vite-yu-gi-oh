@@ -28,7 +28,7 @@ export default {
 
 article {
     width: calc((100% / 5) - 1rem );
-    margin: 0 .5rem;
+    margin: 0 .5rem 1rem .5rem;
     background-color: $primary-bg;
     text-align: center;
 

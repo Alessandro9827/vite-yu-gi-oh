@@ -1,15 +1,18 @@
 <template lang="">
   <main>
+    <AppSearch />
     <CardsWrapper />
   </main>
 </template>
 
 <script>
+import AppSearch from './AppSearch.vue';
 import CardsWrapper from './CardsWrapper.vue';
 
 export default {
     components: {
-        CardsWrapper
+        CardsWrapper,
+        AppSearch
     }
 }
 </script>
